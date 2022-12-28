@@ -49,15 +49,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List pages = [const HomePage(), const Videos(), const Music()];
-  List appbarlists = [customAppbar(), videoAppbar(), videoAppbar()];
+  List appbarlists = [customAppbar(), null, null];
   @override
   Widget build(BuildContext context) {
     return Consumer<LayoutProvider>(
         builder: (context, value, child) => Scaffold(
               body: SafeArea(
-                child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    child: pages[value.pageindex]),
+                child: pages[value.pageindex],
               ),
               appBar: appbarlists[value.pageindex],
               //  customAppbar()

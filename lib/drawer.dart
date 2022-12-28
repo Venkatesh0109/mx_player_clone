@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/appbar.dart';
 import 'package:flutter_application_2/constants/colors.dart';
 import 'package:flutter_application_2/key.dart';
 import 'package:flutter_application_2/widgets.dart';
@@ -125,7 +126,13 @@ class _IconDrawerState extends State<IconDrawer> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    contents("WhatsApp Status Saver", Icons.whatsapp, true),
+                    InkWell(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => sliverappbar(context))),
+                        child: contents(
+                            "WhatsApp Status Saver", Icons.whatsapp, true)),
                     contents("App Language", Icons.sort_by_alpha_sharp, false),
                     contents("Content Language", Icons.g_translate, false),
                     contents("Dark Theme", Icons.dark_mode_outlined, false),
@@ -134,7 +141,7 @@ class _IconDrawerState extends State<IconDrawer> {
                 ),
               ),
               Container(
-                height: local?300:44+8,
+                  height: local ? 300 : 44 + 8,
                   padding: const EdgeInsets.all(14),
                   margin: const EdgeInsets.all(8),
                   decoration: const BoxDecoration(
@@ -166,23 +173,24 @@ class _IconDrawerState extends State<IconDrawer> {
                       ),
                       local
                           ? SizedBox(
-                            height: 220,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              height: 220,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  localcontainer(
-                                      Icons.lock_outline_sharp, "Private folder"),
+                                  localcontainer(Icons.lock_outline_sharp,
+                                      "Private folder"),
                                   localcontainer(
                                       Icons.equalizer_rounded, "Equalizer"),
                                   localcontainer(Icons.playlist_play_outlined,
                                       "Video Playlists"),
                                   localcontainer(
                                       Icons.language, "Network Stream"),
-                                  localcontainer(
-                                      Icons.network_cell_sharp, "Local Network"),
+                                  localcontainer(Icons.network_cell_sharp,
+                                      "Local Network"),
                                 ],
                               ),
-                          )
+                            )
                           : const SizedBox.shrink(),
                     ],
                   )),
